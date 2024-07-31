@@ -1,0 +1,295 @@
+{
+	"info": {
+		"_postman_id": "51855a3f-4058-41a5-b713-f7db34210a09",
+		"name": "USER FLOW",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30576075"
+	},
+	"item": [
+		{
+			"name": "LogIn",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJson = pm.response.json();\r",
+							"pm.globals.set(\"access\", responseJson.access);\r",
+							"pm.globals.set(\"refresh\", responseJson.refresh);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"uarmola1@gmail.com\",\r\n    \"password\": \"1111\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host_name}}/api/v1/log_in/",
+					"host": [
+						"{{host_name}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"log_in",
+						""
+					]
+				},
+				"description": "AUTH "
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJson = pm.response.json();\r",
+							"pm.globals.set(\"access\", responseJson.token.access);\r",
+							"pm.globals.set(\"refresh\", responseJson.token.refresh);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authentification",
+						"value": "Bearer {{access}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\": \"test\",\r\n    \"last_name\": \"user\",\r\n    \"email\": \"uarmola1@gmail.com\",\r\n    \"password\": \"1111\"\r\n}"
+				},
+				"url": {
+					"raw": "{{host_name}}/api/v1/user/register/",
+					"host": [
+						"{{host_name}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"register",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJson = pm.response.json();\r",
+							"pm.globals.set(\"access\", responseJson.access);\r",
+							"pm.globals.set(\"refresh\", responseJson.refresh);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"refresh\": \"{{refresh}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host_name}}/api/v1/token/refresh/",
+					"host": [
+						"{{host_name}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"token",
+						"refresh",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VerifyToken",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"token\": \"{{access}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{host_name}}/api/v1/token/verify/",
+					"host": [
+						"{{host_name}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"token",
+						"verify",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\":\"uarmola1@gmail.com\", \"password\": \"1111\", \"first_name\":\"Yura\", \"last_name\": \"Yarmola\"}"
+				},
+				"url": {
+					"raw": "{{host_name}}/api/v1/user/update/",
+					"host": [
+						"{{host_name}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"update",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Password",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"uarmola1@gmail.com\"\r\n}"
+				},
+				"url": {
+					"raw": "{{host_name}}/api/v1/user/reset_password/",
+					"host": [
+						"{{host_name}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"reset_password",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUser",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host_name}}/api/v1/user/",
+					"host": [
+						"{{host_name}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

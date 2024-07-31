@@ -1,0 +1,305 @@
+{
+	"info": {
+		"_postman_id": "da2b9c10-b888-4bd4-8319-aafaba17e2e8",
+		"name": "FORUM FLOW",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30576075"
+	},
+	"item": [
+		{
+			"name": "Create Post",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"My first work\",\r\n    \"content\": \"Hello, that is test post from my real test task!\",\r\n    \"auto_reply_timeout\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host_name}}/api/v1/forum/post/",
+					"host": [
+						"{{host_name}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"forum",
+						"post",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Post",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host_name}}/api/v1/forum/post/",
+					"host": [
+						"{{host_name}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"forum",
+						"post",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Post",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"you are beatiful\",\r\n    \"content\": \"Привіт\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host_name}}/api/v1/forum/post/1/",
+					"host": [
+						"{{host_name}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"forum",
+						"post",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Comment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"content\": \"Nice job!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host_name}}/api/v1/forum/post/2/comment/",
+					"host": [
+						"{{host_name}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"forum",
+						"post",
+						"2",
+						"comment",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Comments",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host_name}}/api/v1/forum/post/2/comment/",
+					"host": [
+						"{{host_name}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"forum",
+						"post",
+						"2",
+						"comment",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Comment REPLY",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"content\": \"Nice job!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host_name}}/api/v1/forum/comment/2/reply/",
+					"host": [
+						"{{host_name}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"forum",
+						"comment",
+						"2",
+						"reply",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Comment REPLY",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"content\": \"Nice job!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host_name}}/api/v1/forum/comment/1/reply/",
+					"host": [
+						"{{host_name}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"forum",
+						"comment",
+						"1",
+						"reply",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DAILY BREAKDOWN",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host_name}}/api/v1/forum/comments-daily-breakdown/?date_from=2005-02-22&date_to=2025-02-22",
+					"host": [
+						"{{host_name}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"forum",
+						"comments-daily-breakdown",
+						""
+					],
+					"query": [
+						{
+							"key": "date_from",
+							"value": "2005-02-22"
+						},
+						{
+							"key": "date_to",
+							"value": "2025-02-22"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
